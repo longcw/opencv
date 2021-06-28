@@ -97,6 +97,8 @@ using namespace cv::dnn;
 using namespace aruco;
 #endif
 
+using namespace wechat_qrcode;
+
 namespace binding_utils
 {
     template<typename classT, typename enumT>
