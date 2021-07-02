@@ -98,6 +98,7 @@ using namespace aruco;
 #endif
 
 using namespace wechat_qrcode;
+using namespace barcode;
 
 namespace binding_utils
 {
@@ -443,6 +444,7 @@ EMSCRIPTEN_BINDINGS(binding_utils)
     register_vector<cv::KeyPoint>("KeyPointVector");
     register_vector<cv::DMatch>("DMatchVector");
     register_vector<std::vector<cv::DMatch>>("DMatchVectorVector");
+    register_vector<BarcodeType>("BarcodeTypeVector");
 
 
     emscripten::class_<cv::Mat>("Mat")

@@ -123,6 +123,7 @@ type_dict = {
     'String': 'std::string',
     'const String&': 'const std::string&',
     'const string&': 'const std::string&',
+    'std::vector<string>&': 'std::vector<std::string>&',
 }
 
 def normalize_class_name(name):
@@ -785,7 +786,7 @@ class JSWrapperGenerator(object):
 
             # Generate bindings for methods
             for method_name, method in sorted(class_info.methods.items()):
-                print(method.class_name)
+                # print(method.class_name)
                 if method.cname in ignore_list:
                     continue
                 if not method.name in white_list[method.class_name]:
