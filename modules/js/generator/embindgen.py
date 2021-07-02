@@ -121,7 +121,8 @@ type_dict = {
     'OutputArrayOfArrays': 'std::vector<cv::Mat>&',
     'string': 'std::string',
     'String': 'std::string',
-    'const String&':'const std::string&'
+    'const String&': 'const std::string&',
+    'const string&': 'const std::string&',
 }
 
 def normalize_class_name(name):
@@ -463,7 +464,7 @@ class JSWrapperGenerator(object):
                     ret_type = type_dict[ptr_type]
             for key in type_dict:
                 if key in ret_type:
-                    ret_type = re.sub('(^|[^\w])' + key + '($|[^\w])', type_dict[key], ret_type)
+                    ret_type = re.sub(r'((?<=^)|(?<=[^\w]))' + key + r'((?=$)|(?=[^\w]))', type_dict[key], ret_type)
             arg_types = []
             unwrapped_arg_types = []
             for arg in variant.args:
@@ -636,7 +637,7 @@ class JSWrapperGenerator(object):
                     # Replace types. Instead of ret_type.replace we use regular
                     # expression to exclude false matches.
                     # See https://github.com/opencv/opencv/issues/15514
-                    ret_type = re.sub('(^|[^\w])' + key + '($|[^\w])', type_dict[key], ret_type)
+                    ret_type = re.sub(r'((?<=^)|(?<=[^\w]))' + key + r'((?=$)|(?=[^\w]))', type_dict[key], ret_type)
             if variant.constret and ret_type.startswith('const') == False:
                 ret_type = 'const ' + ret_type
             if variant.refret and ret_type.endswith('&') == False:
@@ -784,6 +785,7 @@ class JSWrapperGenerator(object):
 
             # Generate bindings for methods
             for method_name, method in sorted(class_info.methods.items()):
+                print(method.class_name)
                 if method.cname in ignore_list:
                     continue
                 if not method.name in white_list[method.class_name]:

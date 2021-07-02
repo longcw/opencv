@@ -101,7 +101,6 @@ calib3d = {'': ['findHomography', 'calibrateCameraExtended', 'drawFrameAxes', 'e
                 'getDefaultNewCameraMatrix', 'initUndistortRectifyMap', 'Rodrigues', \
                 'solvePnP', 'solvePnPRansac', 'solvePnPRefineLM']}
 
-wechat_qrcode = {"WeChatQRCode": ["detectAndDecode"]}
-
+wechat_qrcode = {"wechat_qrcode_WeChatQRCode": ["detectAndDecode", "WeChatQRCode"]}
 
 white_list = makeWhiteList([core, imgproc, objdetect, video, dnn, features2d, photo, aruco, calib3d, wechat_qrcode])

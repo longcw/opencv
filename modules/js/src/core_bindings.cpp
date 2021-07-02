@@ -436,6 +436,7 @@ EMSCRIPTEN_BINDINGS(binding_utils)
     register_vector<int>("IntVector");
     register_vector<float>("FloatVector");
     register_vector<double>("DoubleVector");
+    register_vector<std::string>("StringVector");
     register_vector<cv::Point>("PointVector");
     register_vector<cv::Mat>("MatVector");
     register_vector<cv::Rect>("RectVector");
